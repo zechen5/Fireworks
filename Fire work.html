@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Spring Festival - Dumpling Wishes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #C41E3A;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            box-shadow: 0 0 5px #ffd700;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 40px 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5em;
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.8), 0 0 40px rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.8), 0 0 40px rgba(255,255,255,0.6); }
+            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,0,1), 0 0 50px rgba(255,255,255,0.8); }
+        }
+
+        /* 交互式按钮样式 */
+        .firework-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 40px;
+            font-size: 1.3em;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, #ffd700, #ffab00);
+            color: #C41E3A;
+            border: 3px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.5), 0 0 20px rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .firework-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255,215,0,0.8), 0 0 30px rgba(255,255,255,0.5);
+        }
+
+        .firework-button:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        .dumpling-container {
+            position: relative;
+            display: inline-block;
+            margin: 40px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .plate {
+            width: 400px;
+            height: 80px;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 5px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plate::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 15px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            border-radius: 50%;
+        }
+
+        .plate-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            color: #DC143C;
+            font-weight: bold;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .dumplings {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        .dumpling {
+            position: absolute;
+            width: 70px;
+            height: 50px;
+            background: radial-gradient(ellipse at 30% 30%, #fffacd, #ffd700 60%, #daa520);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .dumpling::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 45%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 6px,
+                rgba(218, 165, 32, 0.3) 6px,
+                rgba(218, 165, 32, 0.3) 7px
+            );
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .dumpling1 { top: 20px; left: 50px; transform: rotate(-10deg); }
+        .dumpling2 { top: 0px; left: 140px; transform: rotate(5deg); }
+        .dumpling3 { top: 25px; left: 230px; transform: rotate(-5deg); }
+        .dumpling4 { top: 50px; left: 90px; transform: rotate(8deg); }
+        .dumpling5 { top: 45px; left: 180px; transform: rotate(-12deg); }
+        .dumpling6 { top: 5px; left: 280px; transform: rotate(3deg); }
+
+        .face {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyes {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .eye {
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .smile {
+            width: 20px;
+            height: 10px;
+            border: 2px solid #ff6b6b;
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .chopsticks {
+            position: absolute;
+            top: -60px;
+            right: -80px;
+            transform: rotate(-45deg);
+        }
+
+        .chopstick {
+            width: 6px;
+            height: 150px;
+            background: linear-gradient(180deg, #8b4513 0%, #a0522d 100%);
+            border-radius: 3px;
+            position: absolute;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .chopstick:first-child { left: 0; }
+        .chopstick:last-child { left: 15px; }
+
+        .steam {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            top: -100px;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .steam-particle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            animation: rise 3s infinite;
+        }
+
+        .steam-particle:nth-child(1) { left: 30%; animation-delay: 0s; }
+        .steam-particle:nth-child(2) { left: 50%; animation-delay: 0.5s; }
+        .steam-particle:nth-child(3) { left: 70%; animation-delay: 1s; }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-80px) scale(1.5); opacity: 0; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            animation: explode 1.8s infinite;
+        }
+
+        /* 大烟花样式 */
+        .big-firework {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes bigExplode {
+            0% { transform: scale(0); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .firework-1 { top: 5%; left: 2%; animation-delay: 0s; }
+        .firework-2 { top: 8%; right: 2%; animation-delay: 0.5s; }
+        .firework-3 { top: 15%; left: 8%; animation-delay: 0.2s; }
+        .firework-4 { top: 18%; right: 8%; animation-delay: 0.7s; }
+        .firework-5 { top: 25%; left: 1%; animation-delay: 0.9s; }
+        .firework-6 { top: 28%; right: 1%; animation-delay: 0.3s; }
+        .firework-7 { top: 35%; left: 6%; animation-delay: 1.1s; }
+        .firework-8 { top: 38%; right: 6%; animation-delay: 0.6s; }
+        .firework-9 { top: 45%; left: 3%; animation-delay: 0.4s; }
+        .firework-10 { top: 48%; right: 3%; animation-delay: 1.3s; }
+        .firework-11 { top: 55%; left: 7%; animation-delay: 0.8s; }
+        .firework-12 { top: 58%; right: 7%; animation-delay: 0.1s; }
+        .firework-13 { top: 65%; left: 2%; animation-delay: 1.0s; }
+        .firework-14 { top: 68%; right: 2%; animation-delay: 0.5s; }
+        .firework-15 { top: 75%; left: 5%; animation-delay: 1.2s; }
+        .firework-16 { top: 78%; right: 5%; animation-delay: 0.4s; }
+        .firework-17 { top: 85%; left: 4%; animation-delay: 0.7s; }
+        .firework-18 { top: 88%; right: 4%; animation-delay: 1.4s; }
+        .firework-19 { top: 12%; left: 15%; animation-delay: 0.9s; }
+        .firework-20 { top: 62%; right: 15%; animation-delay: 0.2s; }
+
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .spark {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+        }
+
+        .big-spark {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+        }
+
+        .blessing {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #ffd700;
+            margin: 60px 0 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 10px rgba(255,215,0,0.6);
+            line-height: 1.6;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-top: 20px;
+            text-align: right;
+            padding-right: 50px;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2.5em; }
+            .plate { width: 300px; }
+            .dumpling { width: 50px; height: 40px; }
+            .blessing { font-size: 1.5em; }
+            .firework { width: 120px; height: 120px; }
+            .firework-button { font-size: 1em; padding: 12px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <!-- 背景烟花 -->
+    <div class="firework firework-1" id="firework1"></div>
+    <div class="firework firework-2" id="firework2"></div>
+    <div class="firework firework-3" id="firework3"></div>
+    <div class="firework firework-4" id="firework4"></div>
+    <div class="firework firework-5" id="firework5"></div>
+    <div class="firework firework-6" id="firework6"></div>
+    <div class="firework firework-7" id="firework7"></div>
+    <div class="firework firework-8" id="firework8"></div>
+    <div class="firework firework-9" id="firework9"></div>
+    <div class="firework firework-10" id="firework10"></div>
+    <div class="firework firework-11" id="firework11"></div>
+    <div class="firework firework-12" id="firework12"></div>
+    <div class="firework firework-13" id="firework13"></div>
+    <div class="firework firework-14" id="firework14"></div>
+    <div class="firework firework-15" id="firework15"></div>
+    <div class="firework firework-16" id="firework16"></div>
+    <div class="firework firework-17" id="firework17"></div>
+    <div class="firework firework-18" id="firework18"></div>
+    <div class="firework firework-19" id="firework19"></div>
+    <div class="firework firework-20" id="firework20"></div>
+
+    <!-- 交互式按钮 -->
+    <button class="firework-button" id="fireworkBtn">🎆 Launch Firework 🎆</button>
+
+    <div class="container">
+        <h1 class="title">Happy Spring Festival</h1>
+
+        <div class="dumpling-container">
+            <div class="steam">
+                <div class="steam-particle"></div>
+                <div class="steam-particle"></div>
+                <div class="steam-particle"></div>
+            </div>
+
+            <div class="dumplings">
+                <div class="dumpling dumpling1">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+                <div class="dumpling dumpling2">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+                <div class="dumpling dumpling3">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+                <div class="dumpling dumpling4">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+                <div class="dumpling dumpling5">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+                <div class="dumpling dumpling6">
+                    <div class="face">
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+                        <div class="smile"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plate">
+                <span class="plate-text">Chinese Dumpling</span>
+            </div>
+            <div class="chopsticks">
+                <div class="chopstick"></div>
+                <div class="chopstick"></div>
+            </div>
+        </div>
+
+        <div class="blessing">
+            May this new year bring you warmth, joy, and countless blessings!<br>
+            Wishing you prosperity and happiness with every dumpling!
+        </div>
+
+        <div class="signature">— Mingxuan Zhao</div>
+    </div>
+
+    <script>
+        // 生成星星
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        const colors = ['#ffd700', '#ffeb3b', '#ffffff', '#ffe082', '#ffab00', '#ffd93d', '#fff9c4', '#ffecb3'];
+
+        // 创建小烟花
+        function createFirework(fireworkId) {
+            const firework = document.getElementById(fireworkId);
+            if (!firework) return;
+            firework.innerHTML = '';
+            for (let i = 0; i < 18; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'spark';
+                const angle = (i * 20) * Math.PI / 180;
+                const distance = 70;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+                spark.style.transform = `translate(${x}px, ${y}px)`;
+                spark.style.boxShadow = `0 0 15px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                firework.appendChild(spark);
+            }
+        }
+
+        // 初始化背景烟花
+        for(let i = 1; i <= 20; i++) {
+            createFirework('firework' + i);
+        }
+
+        setInterval(() => {
+            for(let i = 1; i <= 20; i++) {
+                createFirework('firework' + i);
+            }
+        }, 1800);
+
+        // 创建大烟花函数
+        function launchBigFirework() {
+            const bigFirework = document.createElement('div');
+            bigFirework.className = 'big-firework';
+
+            // 随机位置（避开底部按钮区域）
+            const x = Math.random() * 80 + 10; // 10%-90%
+            const y = Math.random() * 60 + 10; // 10%-70%
+            bigFirework.style.left = x + '%';
+            bigFirework.style.top = y + '%';
+            bigFirework.style.animation = 'bigExplode 2s ease-out';
+
+            // 创建大烟花的火花（更多更大）
+            for (let i = 0; i < 30; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'big-spark';
+                const angle = (i * 12) * Math.PI / 180;
+                const distance = 120;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                spark.style.background = color;
+                spark.style.transform = `translate(${x}px, ${y}px)`;
+                spark.style.boxShadow = `0 0 25px ${color}`;
+
+                bigFirework.appendChild(spark);
+            }
+
+            document.body.appendChild(bigFirework);
+
+            // 2秒后移除
+            setTimeout(() => {
+                bigFirework.remove();
+            }, 2000);
+        }
+
+        // 按钮点击事件
+        document.getElementById('fireworkBtn').addEventListener('click', function() {
+            launchBigFirework();
+
+            // 按钮动画反馈
+            this.style.transform = 'translateX(-50%) scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(-50%) scale(1)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
